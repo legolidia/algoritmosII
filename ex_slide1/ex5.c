@@ -13,7 +13,7 @@ int main(){
 	
 	f = c * (9/5) + 32;
 	
-	printf("A Temperatura em graus Fahrenheit é %.2f", f);
+	printf("A Temperatura em graus Fahrenheit ï¿½ %.2f", f);
 	
 	return 0;
 }

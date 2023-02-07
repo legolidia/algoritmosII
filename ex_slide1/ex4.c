@@ -8,7 +8,7 @@ int main(){
 	
 	int lapis = 45, borracas=2345, canetas=420, Cadernos=8, fitas=13050;
 	
-	printf("Lápis = %d\n", lapis);
+	printf("Lï¿½pis = %d\n", lapis);
 	printf("Borrachas = %d\n", borracas);
 	printf("Canetas = %d\n", canetas);
 	printf("Cadernos = %d\n", Cadernos);

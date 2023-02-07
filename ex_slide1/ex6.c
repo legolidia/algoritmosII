@@ -14,7 +14,7 @@ int main(){
 	
 	a = 4 * M_PI * r * r;
 	
-	printf("area = %fm²\n", a);
+	printf("area = %fmï¿½\n", a);
 	
 	return 0;
 }
