@@ -10,7 +10,7 @@ int main(){
 	char corrida = 'C';
 	float tempo = 27.25;
 	
-	printf("O tempo vitorioso na eliminatória %c da competição %d foi %.2f", corrida, evento, tempo);
+	printf("O tempo vitorioso na eliminatï¿½ria %c da competiï¿½ï¿½o %d foi %.2f", corrida, evento, tempo);
 	
 	return 0;
 	
