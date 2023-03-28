@@ -2,36 +2,76 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
 
 void sorteiaPalavra()
 {
     FILE *palavras;
     FILE *sorteada;
 
-    palavras = fopen("palavra.txt", "r");
+    palavras = fopen("palavras.txt", "r");
 
     char palavra[20];
     int i = 0;
-    while(i<5)
+    while (!feof(palavras))
     {
-        if(fgets(palavra, 20, palavras) != NULL)
+        if (fgets(palavra, 20, palavras) != NULL)
             i++;
     }
+
     srand(time(NULL));
-    printf("%d\n", i);
-    int sorteio = rand() % i;
-    i = 0;
+
     rewind(palavras);
 
-    sorteada = fopen("sorteada.txt", "w");
-    while (fgets(palavra, 100, palavras) != NULL)
-    {
-        if (i == sorteio)
+    bool tamanhoCerto = 1;
+
+   i--;
+
+    while(tamanhoCerto){
+        rewind(palavras);
+        int sorteio;
+        sorteio = rand()%6621;
+        printf("%d\n", sorteio);
+        i = 0;
+
+        while (i!=sorteio){
+            fgets(palavra, 20, palavras);
+            i++;
+        }
+
+        if (strlen(palavra) == 6){ 
+            sorteada = fopen("sorteada.txt", "w");
             fprintf(sorteada, "%s", palavra);
-        i++;
+            printf("%s", palavra);
+            tamanhoCerto = 0;
+        }
     }
+
+
+    /*while (strlen(palavra) > 5 || strlen(palavra) < 5)
+    {
+
+        sorteada = fopen("sorteada.txt", "w");
+
+        int sorteio = rand() % 6621; // 7
+        i = 0;
+        while (i!=sorteio){ //i=0
+        {
+            // verificar se tem 5 letras, se tem, adicionar em sorteada, se não tem, volta ao laço
+            
+            fgets(palavra, 20, palavras);
+            
+            fprintf(sorteada, "%s", palavra);
+                printf("%s", palavra);
+                break;
+            }
+            i++;
+        }
+    }
+
     fclose(palavras);
-    fclose(sorteada);
+    fclose(sorteada);*/
+
 }
 
 int main()
@@ -46,6 +86,7 @@ int main()
     printf("%s", linha);
 
     fclose(sorteada);
+    fclose(fopen("sorteada.txt", "wb"));
 }
 
 // https://github.com/thoughtworks/dadoware/blob/master/fontes/sem_acentos.txt
