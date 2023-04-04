@@ -96,36 +96,37 @@ void sorteiaPalavra()
 int verificaPalavra(char palavra[])
 {
     int i;
-    FILE *palavraSorteada;
-    FILE *todasPalavras;
-
+    int r;
     char linha[20];
 
-    int r;
+    FILE *todasPalavras;
 
-    palavraSorteada = fopen("sorteada.txt", "r");
     todasPalavras = fopen("palavras.txt", "r");
+    rewind(todasPalavras);
 
     while (!feof(todasPalavras))
     {
 
         fgets(linha, 20, todasPalavras);
+
+        printf("%s\n", linha);
         
         if (strcmp(linha, palavra) == 0 && strlen(linha) == 5)
         {
             r = 1;
+            printf("%s\n", linha);
+            printf("%s\n", palavra);
             break;
         }
 
         else{
             r = 0;
-            break;
+            printf("Não existe essa palavra\n");
         }
     }
 
     return r;
 
-    fclose(palavraSorteada);
     fclose(todasPalavras);
 }
 
@@ -153,13 +154,18 @@ void wordle()
 
     while (numTentativas < 5)
     {
-        do
+        printf("Digite uma palavra de 5 letras: ");
+        scanf("%s", &tentativa);
+
+        int existe = verificaPalavra(tentativa);
+
+        while(strlen(tentativa) != 5 || existe == 0)
         {
             printf("Digite uma palavra de 5 letras: ");
-            scanf("%s", tentativa);
-            if(strlen(tentativa) != 5 && verificaPalavra(tentativa) == 0)
-                printf("Essa palavra não tem 5 letras ou é inválida, tente novamente.\n");
-        } while(strlen(tentativa) != 5 && verificaPalavra(tentativa) == 0);
+            scanf("%s", &tentativa);
+            existe = verificaPalavra(tentativa);
+        }
+        
 
         if (strcmp(tentativa, palavraSorteada) == 0)
         {
