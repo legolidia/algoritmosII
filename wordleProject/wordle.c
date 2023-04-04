@@ -25,65 +25,78 @@ void sorteiaPalavra()
 
     bool tamanhoCerto = 1;
 
-   i--;
-
-    while(tamanhoCerto){
+    while (tamanhoCerto)
+    {
         rewind(palavras);
         int sorteio;
-        sorteio = rand()%6621;
-        printf("%d\n", sorteio);
+        sorteio = rand() % 6621;
         i = 0;
 
-        while (i!=sorteio){
+        while (i != sorteio)
+        {
             fgets(palavra, 20, palavras);
             i++;
         }
 
-        if (strlen(palavra) == 6){ 
+        if (strlen(palavra) == 6)
+        {
             sorteada = fopen("sorteada.txt", "w");
             fprintf(sorteada, "%s", palavra);
             printf("%s", palavra);
             tamanhoCerto = 0;
         }
     }
+    rewind(palavras);
+    fclose(palavras);
+}
 
+int verificaPalavra(char palavra[])
+{
+    int i;
+    FILE *palavraSorteada;
+    FILE *todasPalavras;
 
-    /*while (strlen(palavra) > 5 || strlen(palavra) < 5)
+    char linha[20];
+
+    int r;
+
+    palavraSorteada = fopen("sorteada.txt", "r");
+    todasPalavras = fopen("palavras.txt", "r");
+
+    while (!feof(todasPalavras))
     {
 
-        sorteada = fopen("sorteada.txt", "w");
+        fgets(linha, 6, todasPalavras);
 
-        int sorteio = rand() % 6621; // 7
-        i = 0;
-        while (i!=sorteio){ //i=0
+        if (strcmp(linha, palavra) == 0)
         {
-            // verificar se tem 5 letras, se tem, adicionar em sorteada, se não tem, volta ao laço
-            
-            fgets(palavra, 20, palavras);
-            
-            fprintf(sorteada, "%s", palavra);
-                printf("%s", palavra);
-                break;
-            }
-            i++;
+            printf("Palavra existe.\n");
+            r = 1;
+            break;
         }
+
+        else
+            r = 0;
     }
 
-    fclose(palavras);
-    fclose(sorteada);*/
-
+    return r;
 }
 
 int main()
 {
     FILE *sorteada;
     char linha[100];
+    char tent[10];
 
     sorteiaPalavra();
 
     sorteada = fopen("sorteada.txt", "r");
     fgets(linha, 100, sorteada);
     printf("%s", linha);
+
+    scanf("%s", &tent);
+
+    verificaPalavra(tent);
 
     fclose(sorteada);
     fclose(fopen("sorteada.txt", "wb"));
