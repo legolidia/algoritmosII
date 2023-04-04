@@ -26,6 +26,7 @@ int main()
         {
         case 1:
             wordle();
+            menu = 0;
             break;
         case 2:
             printf("\n          OBRIGADA POR JOGAR!\n\n");
@@ -108,9 +109,9 @@ int verificaPalavra(char palavra[])
     while (!feof(todasPalavras))
     {
 
-        fgets(linha, 6, todasPalavras);
-
-        if (strcmp(linha, palavra) == 0)
+        fgets(linha, 20, todasPalavras);
+        
+        if (strcmp(linha, palavra) == 0 && strlen(linha) == 5)
         {
             r = 1;
             break;
@@ -118,7 +119,7 @@ int verificaPalavra(char palavra[])
 
         else{
             r = 0;
-            printf("Palavra não existe, tente novamente. \n");
+            break;
         }
     }
 
@@ -156,9 +157,9 @@ void wordle()
         {
             printf("Digite uma palavra de 5 letras: ");
             scanf("%s", tentativa);
-            if(strlen(tentativa) != 5)
-                printf("Essa palavra tem mais de 5 letras, tente novamente.\n");
-        } while(strlen(tentativa) != 5);
+            if(strlen(tentativa) != 5 && verificaPalavra(tentativa) == 0)
+                printf("Essa palavra não tem 5 letras ou é inválida, tente novamente.\n");
+        } while(strlen(tentativa) != 5 && verificaPalavra(tentativa) == 0);
 
         if (strcmp(tentativa, palavraSorteada) == 0)
         {
@@ -195,7 +196,8 @@ void wordle()
             printf("%s\n", resultado);
 
             numTentativas++;
-            printf("Você tem mais %d tentativa(s).\n", 5 - numTentativas);
+            if(numTentativas < 5)
+                printf("Você tem mais %d tentativa(s).\n", 5 - numTentativas);
         }
     
     }
