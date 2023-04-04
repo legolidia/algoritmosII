@@ -4,6 +4,44 @@
 #include <time.h>
 #include <stdbool.h>
 
+int main()
+{
+    void sorteiaPalavra();
+    int verificaPalavra(char palavra[]);
+    void wordle();
+
+    int menu = -1;
+
+    while (menu > -1)
+    {
+        printf("-------------WORDLE----------------\n");
+
+        printf("Digite a opção desejada: ");
+        scanf("%d", &menu);
+
+        switch (menu)
+        {
+        case 1:
+            wordle();
+            break;
+        case 2:
+            printf("Obrigada por jogar!\n");
+            printf("Desenvolvido por:\n");
+            printf("Isabella de Castro Jorge - TIA\n");
+            printf("Lídia Carolina de Andrade Rosa\n");
+            printf("Turma 02G11 - FCI - Ciência da Computação\n");
+            menu = -1;
+            break;
+        default:
+            printf("Opção inválida, digite novamente.\n");
+            printf("1 - Iniciar Jogo\n");
+            printf("2 - Sair\n");
+            scanf("%d", &menu);
+            break;
+        }
+    }
+}
+
 void sorteiaPalavra()
 {
     FILE *palavras;
@@ -82,24 +120,21 @@ int verificaPalavra(char palavra[])
     return r;
 }
 
-int main()
+void wordle()
 {
-    FILE *sorteada;
-    char linha[100];
-    char tent[10];
+    char tentativa[6];
+    int numTentativas = 0;
 
+    printf("Vamos começar!\n");
     sorteiaPalavra();
 
-    sorteada = fopen("sorteada.txt", "r");
-    fgets(linha, 100, sorteada);
-    printf("%s", linha);
+    while (numTentativas < 5)
+    {
+       do{
+        printf("Digite uma palavra de 5 letras: ");
+        scanf("%s", tentativa);
+       } while(strlen(tentativa) != 5);
+    }
 
-    scanf("%s", &tent);
-
-    verificaPalavra(tent);
-
-    fclose(sorteada);
-    fclose(fopen("sorteada.txt", "wb"));
+    printf("ok.\n");
 }
-
-// https://github.com/thoughtworks/dadoware/blob/master/fontes/sem_acentos.txt
