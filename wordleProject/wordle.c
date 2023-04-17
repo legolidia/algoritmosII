@@ -114,14 +114,12 @@ int verificaPalavra(char palavra[])
         if (strcmp(linha, palavra) == 0 && strlen(linha) == 5)
         {
             r = 1;
-            printf("%s\n", linha);
-            printf("%s\n", palavra);
             break;
         }
 
         else{
             r = 0;
-            printf("Não existe essa palavra\n");
+    
         }
     }
 
@@ -155,14 +153,14 @@ void wordle()
     while (numTentativas < 5)
     {
         printf("Digite uma palavra de 5 letras: ");
-        scanf("%s", &tentativa);
+        scanf("%c", &teqwntativa);
 
         int existe = verificaPalavra(tentativa);
 
         while(strlen(tentativa) != 5 || existe == 0)
         {
             printf("Digite uma palavra de 5 letras: ");
-            scanf("%s", &tentativa);
+            scanf("%c", &tentativa);
             existe = verificaPalavra(tentativa);
         }
         
