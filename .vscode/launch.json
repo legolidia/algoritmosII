@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/workspaces/algoritmosII/wordleProject",
-      "program": "/workspaces/algoritmosII/wordleProject/build/Debug/outDebug",
+      "cwd": "/workspaces/algoritmosII",
+      "program": "/workspaces/algoritmosII/build/Debug/outDebug",
       "MIMode": "lldb",
       "miDebuggerPath": "/usr/bin/lldb",
       "setupCommands": [
