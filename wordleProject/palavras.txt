@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+piolho
+>>>>>>> 75482d545630bb90abbe4962357498e3f385becb
 a
 aba
 abacaxi

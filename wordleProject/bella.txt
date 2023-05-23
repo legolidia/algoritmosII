@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int verificaPalavra () {
+  int i;
+  // inserir 5 palavras
+  for (i=0; i<5; i++){
+      printf ("Insira a palavra")
+      scanf ("%s", palavra);
+      //verificar se corresponde
+      char exemplo[100];
+      int matchPalavra = 0;
+      while (fgets(exemplo, sizeof(exemplo), arquivo)) {
+        if (strcmp(exemplo, palavra) == 0 ) { // strcmp -- > comparar strings
+          printf("Palavra esta no arquivo txt")
+          matchPalavra = 1 // se matchPalavra == 1, encontrou a palavra
+          break;
+        } 
+      }
+      rewind(fp); // reset the file pointer to the beginning of the file
+      if (!matchPalavra){
+        printf ("Palavra nao encontrada no arquivo, tente novamente \n")
+        i--;
+      }
+  }
+  return 0;
+}
