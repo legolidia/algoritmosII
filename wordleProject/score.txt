@@ -1,0 +1,5 @@
+lidia | opaco | 3 | 30,0
+lidia | tento | 4 | 30,4
+lidia | varar | 5 | 76,7
+lidia | manco | 5 | 90,1
+
